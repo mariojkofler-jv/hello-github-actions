@@ -2,11 +2,13 @@ name: A workflow for my Hello World file
 on: push
 
 jobs:
-  build:
-    name: Hello world action
+  hello_world_job:
+    name: A job to say hello with composite action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
+      - uses: actions/checkout@v2
+      - uses: actions/hello-world-composite-action@v1
         with: 
-          REVOLUTION_IS_MY_NAME: "Volvo"
+          who-to-greet: "Sir Lancelot of Camelot"
+      - run: echo random-number ${{steps.foo.outputs.random-number }}
+        shell: bash
