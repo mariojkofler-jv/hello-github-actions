@@ -21,6 +21,6 @@ jobs:
       - uses: ./.github/hello-world-composite-action
         id: compositus
         with:
-          who-to-greet: "Sir Lancelot of Camelot"
+          who-to-greet: "Sire Lancelot of Camelot"
       - run: echo random-number ${{steps.compositus.outputs.random-number }}
         shell: bash
