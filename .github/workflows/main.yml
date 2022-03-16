@@ -5,18 +5,19 @@ jobs:
   hello_world_job:
     name: A job to say hello with composite action
     runs-on: ubuntu-latest
+
     steps:
       - name: Get composite run steps repository
-       uses: actions/checkout@v2
-       with:
-         repository: mariojkofler-jv/hello-world-composite-action@v1
-         path: .github/hello-world-composite-action
+        uses: actions/checkout@v2
+        with:
+          repository: mariojkofler-jv/hello-world-composite-action@v1
+          path: .github/hello-world-composite-action
 
       - name: Run action with composite action
-      - uses: actions/checkout@v2
-        id: compositus
+        uses: actions/checkout@v2
       - uses: ./.github/hello-world-composite-action
-        with: 
+        id: compositus
+        with:
           who-to-greet: "Sir Lancelot of Camelot"
       - run: echo random-number ${{steps.compositus.outputs.random-number }}
         shell: bash
