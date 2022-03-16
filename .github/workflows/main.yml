@@ -16,7 +16,7 @@ jobs:
           repository: mariojkofler-jv/hello-world-composite-action
           #select branch
           ref: master
-          #token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
           path: .github/hello-world-composite-action
 
       - name: Run action from private repo
