@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checko out main repository
+        uses: actions/checkout@v2
+
       - name: Get composite run steps repository
         uses: actions/checkout@v2
         with:
@@ -16,11 +19,10 @@ jobs:
           token: ${{ secrets.PAT_TOKEN }}
           path: .github/hello-world-composite-action
 
-      - name: Run action with composite action
-        uses: actions/checkout@v2
-      - uses: ./.github/hello-world-composite-action
+      - name: Run action from private repo
+        uses: ./.github/hello-world-composite-action
         id: compositus
         with:
           who-to-greet: "Sir Lancelot of Camelot"
-      - run: echo random-number ${{steps.compositus.outputs.random-number }}
+     - run: echo random-number ${{steps.compositus.outputs.random-number }}
         shell: bash
