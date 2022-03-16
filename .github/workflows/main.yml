@@ -1,5 +1,5 @@
 name: A workflow for my Hello World file
-on: push
+on: [push]
 
 jobs:
   hello_world_job:
@@ -24,5 +24,5 @@ jobs:
         id: compositus
         with:
           who-to-greet: "Sir Lancelot of Camelot"
-     - run: echo random-number ${{steps.compositus.outputs.random-number }}
+      - run: echo random-number ${{steps.compositus.outputs.random-number }}
         shell: bash
