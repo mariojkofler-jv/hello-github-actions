@@ -10,7 +10,7 @@ jobs:
       - name: Get composite run steps repository
         uses: actions/checkout@v2
         with:
-          repository: mariojkofler-jv/hello-world-composite-action@v1
+          repository: mariojkofler-jv/hello-world-composite-action
           #select branch
           ref: master
           path: .github/hello-world-composite-action
