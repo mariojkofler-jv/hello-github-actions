@@ -3,26 +3,16 @@ on: [push]
 
 jobs:
   hello_world_job:
-    name: A job to say hello with composite action
+    name: update AMI ID test
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checko out main repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
-
-      - name: Get composite run steps repository
-        uses: actions/checkout@v2
-        with:
-          repository: mariojkofler-jv/hello-world-composite-action
-          #select branch
-          ref: master
-          token: ${{ secrets.PAT_TOKEN }}
-          path: .github/hello-world-composite-action
-
-      - name: Run action from private repo
-        uses: ./.github/hello-world-composite-action
-        id: compositus
-        with:
-          who-to-greet: "Sire Lancelot of Camelot"
-      - run: echo random-number ${{steps.compositus.outputs.random-number }}
-        shell: bash
+      - name: Update AMI ID in tfvars file
+        run: sed -i 's/^jva_ami_id =.*$/jva_ami_id = \"AMI-ID-NEW\"/' ./AWS_JVADMIN/jvadmin-staging.tfvars
+      - name: Commit updated tfvars file
+        run: |
+          git config --global user.name 'Mario Kofler'
+          git config --global user.name 'mario.kofler@joinvision.com'
+          git commit -am "Updated AMI ID in staging tfvars file"
+          git push
