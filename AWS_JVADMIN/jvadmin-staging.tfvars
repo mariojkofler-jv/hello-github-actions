@@ -25,4 +25,4 @@ office-ip = "212.186.226.145/32"
 
 jva_bastion_ami_id = "ami-0b83faac3a5764c58" #Bastion-Staging Node V3
 
-jva_ami_id = "ami-01dea79d7ae1389f7" #JVA-STAGING
+jva_ami_id = "AMI-ID-NEW"
