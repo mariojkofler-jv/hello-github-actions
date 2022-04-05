@@ -1,4 +1,4 @@
-name: A workflow for my Hello World file
+name: A workflow to test the AMI update
 on: workflow_dispatch
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
         run: sed -i 's/^jva_ami_id =.*$/jva_ami_id = \"AMI-ID-NEW\"/' ./AWS_JVADMIN/jvadmin-staging.tfvars
       - name: Commit updated tfvars file
         run: |
-          git config --global user.name 'Mario Kofler'
-          git config --global user.name 'mario.kofler@joinvision.com'
+          git config --global user.name 'JVCICD'
+          git config --global user.name 'helpdesk@joinvision.com'
           git commit -am "Updated AMI ID in staging tfvars file"
           git push
